@@ -170,7 +170,7 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
                   child: GestureDetector(
                     onTap: (){
                       _controller.pause();
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ChannelPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ChannelPage(idChannel: widget.idChannel,)));
                     },
                     child: FutureBuilder(
                       future: _apiServices.getChanel(widget.idChannel),
@@ -178,6 +178,7 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
                         if(snap.hasData){
                           ChanelModel channel = snap.data;
                           return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               CircleAvatar(
                                 backgroundColor: Colors.black12,
@@ -186,7 +187,7 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
                                 ),
                               ),
                               Expanded(
-                                child: Padding(
+                                child: Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
